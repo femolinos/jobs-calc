@@ -104,6 +104,12 @@ export const InfosSection = styled.section`
 
     border-radius: 5px;
 
+    transition: filter 0.2s;
+
+    &:hover {
+      filter: brightness(0.8);
+    }
+
     img {
       padding: 4px;
     }
@@ -128,4 +134,14 @@ export const JobsInfos = styled.div`
     font-size: 16px;
     color: #fcfdff;
   }
+`;
+
+export const JobsSection = styled.section`
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 0.5rem;
 `;

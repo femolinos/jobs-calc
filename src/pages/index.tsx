@@ -1,10 +1,12 @@
 import Head from "next/head";
 import React from "react";
+import { JobCard } from "../components/JobCard";
 
 import {
   InfosContainer,
   InfosSection,
   JobsInfos,
+  JobsSection,
   PageContainer,
   PageHeader,
   PageHeadingBackground,
@@ -67,6 +69,13 @@ export default function Home() {
             <p>ADICIONAR NOVO JOB</p>
           </button>
         </InfosSection>
+
+        <JobsSection>
+          <JobCard />
+          <JobCard />
+          <JobCard />
+          <JobCard />
+        </JobsSection>
       </PageContainer>
     </Wrapper>
   );
