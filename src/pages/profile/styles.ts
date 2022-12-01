@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 
 export const PageContainer = styled.div`
   width: 1440px;
-  height: 100vh;
+  height: calc(100vh - (4rem + 28px));
   padding: 0 2rem;
 
   display: flex;
@@ -110,17 +110,17 @@ export const PlanningHeading = styled.p`
   margin-top: 3.5rem;
 
   font-size: 32px;
-    font-weight: 600;
-    font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 600;
+  font-family: "IBM Plex Sans", sans-serif;
 
-    color: #5a5a66;
+  color: #5a5a66;
 
-    width: 100%;
-    padding-bottom: 1rem;
+  width: 100%;
+  padding-bottom: 1rem;
 
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: #e1e3e5;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #e1e3e5;
 `;
 
 export const ProfileDataInputForm = styled.form`
