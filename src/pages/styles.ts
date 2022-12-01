@@ -16,6 +16,7 @@ export const PageHeadingBackground = styled.div`
 
 export const PageContainer = styled.div`
   width: 1440px;
+  padding: 0 2rem;
 
   z-index: 9999;
 
