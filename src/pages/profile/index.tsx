@@ -5,9 +5,11 @@ import { Header } from "../../components/Header";
 
 import {
   DefaultFormInput,
+  FormRow,
   MonthValueContainer,
   PageContainer,
   PlanningForm,
+  PlanningHeading,
   ProfileCardContainer,
   ProfileDataInputForm,
   ProfileNameLabel,
@@ -52,36 +54,40 @@ export default function Profile() {
             <input type="text" placeholder="Link da foto" />
           </ProfileDataInputForm>
 
-          <h2>Planejamento</h2>
+          <PlanningHeading>Planejamento</PlanningHeading>
 
           <PlanningForm>
-            <div>
-              <label htmlFor="monthValue">
-                Quanto eu quero ganhar por mês?
-              </label>
-              <MonthValueContainer>
-                <input id="monthValue" type="number" />
-                <ValueInputCurrency>R$</ValueInputCurrency>
-              </MonthValueContainer>
-            </div>
-            <DefaultFormInput>
-              <label htmlFor="worktimePerDay">
-                Quanto eu quero ganhar por mês?
-              </label>
-              <input id="worktimePerDay" type="number" />
-            </DefaultFormInput>
-            <DefaultFormInput>
-              <label htmlFor="daysOfWork">
-                Quantos dias quero trabalhar por semana?
-              </label>
-              <input id="daysOfWork" type="number" />
-            </DefaultFormInput>
-            <DefaultFormInput>
-              <label htmlFor="vacationWeeks">
-                Quantas semanas por ano você quer tirar férias?
-              </label>
-              <input id="vacationWeeks" type="number" />
-            </DefaultFormInput>
+            <FormRow>
+              <DefaultFormInput>
+                <label htmlFor="monthValue">
+                  Quanto eu quero ganhar por mês?
+                </label>
+                <MonthValueContainer>
+                  <input id="monthValue" type="number" />
+                  <ValueInputCurrency>R$</ValueInputCurrency>
+                </MonthValueContainer>
+              </DefaultFormInput>
+              <DefaultFormInput>
+                <label htmlFor="worktimePerDay">
+                  Quantas horas quero trabalhar por dia?
+                </label>
+                <input id="worktimePerDay" type="number" />
+              </DefaultFormInput>
+            </FormRow>
+            <FormRow>
+              <DefaultFormInput>
+                <label htmlFor="daysOfWork">
+                  Quantos dias quero trabalhar por semana?
+                </label>
+                <input id="daysOfWork" type="number" />
+              </DefaultFormInput>
+              <DefaultFormInput>
+                <label htmlFor="vacationWeeks">
+                  Quantas semanas por ano você quer tirar férias?
+                </label>
+                <input id="vacationWeeks" type="number" />
+              </DefaultFormInput>
+            </FormRow>
           </PlanningForm>
         </UserDataForm>
       </PageContainer>

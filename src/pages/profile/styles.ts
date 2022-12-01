@@ -8,6 +8,8 @@ export const Wrapper = styled.div`
 
 export const PageContainer = styled.div`
   width: 1440px;
+  height: 100vh;
+  padding: 0 2rem;
 
   display: flex;
   align-items: center;
@@ -104,6 +106,23 @@ export const UserDataForm = styled.section`
   }
 `;
 
+export const PlanningHeading = styled.p`
+  margin-top: 3.5rem;
+
+  font-size: 32px;
+    font-weight: 600;
+    font-family: "IBM Plex Sans", sans-serif;
+
+    color: #5a5a66;
+
+    width: 100%;
+    padding-bottom: 1rem;
+
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #e1e3e5;
+`;
+
 export const ProfileDataInputForm = styled.form`
   display: flex;
   align-items: center;
@@ -141,6 +160,8 @@ export const PlanningForm = styled.section`
 
   gap: 1.5rem;
 
+  margin-top: 2rem;
+
   flex-wrap: wrap;
 
   width: 100%;
@@ -167,6 +188,14 @@ export const PlanningForm = styled.section`
   }
 `;
 
+export const FormRow = styled.section`
+  display: flex;
+
+  width: 100%;
+
+  gap: 1.5rem;
+`;
+
 export const MonthValueContainer = styled.div`
   position: relative;
   display: flex;
@@ -178,22 +207,19 @@ export const MonthValueContainer = styled.div`
   input {
     padding: 1rem 2rem;
   }
-
-  input[type="number"]::-webkit-inner-spin-button,
-  input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-  }
 `;
 
 export const ValueInputCurrency = styled.span`
   position: absolute;
   display: block;
   left: 5px;
-  top: 17px;
+  top: 34px;
   z-index: 9;
 `;
 
 export const DefaultFormInput = styled.div`
+  min-width: calc(50% - 2rem);
+
   label {
     max-width: 50%;
 
@@ -213,6 +239,10 @@ export const DefaultFormInput = styled.div`
     background: #fcfdff;
 
     width: 100%;
+
+    min-width: calc(50% - 1.5rem);
+
+    margin-top: 1rem;
 
     padding: 1rem 2rem;
   }

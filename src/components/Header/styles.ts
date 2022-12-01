@@ -16,7 +16,7 @@ export const HeaderContent = styled.header`
   display: flex;
   align-items: center;
 
-  padding: 2rem 0;
+  padding: 2rem;
 
   p {
     font-weight: 600;
