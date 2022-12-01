@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import React from "react";
 import { JobCard } from "../components/JobCard";
 
@@ -39,7 +40,9 @@ export default function Home() {
           <ProfileSection>
             <div>
               <p>Jaqueline</p>
-              <p>Ver perfil</p>
+              <Link href={"/profile"}>
+                <p>Ver perfil</p>
+              </Link>
             </div>
 
             <img src="/images/profile-placeholder.svg" alt="Profile Picture" />

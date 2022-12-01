@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-interface JobsInfoProps {
-  hasMargin: boolean | false;
-}
-
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
@@ -74,6 +70,11 @@ export const ProfileSection = styled.aside`
   }
 
   img {
+    width: 64px;
+    height: 64px;
+
+    border-radius: 50%;
+
     margin-left: 20px;
   }
 `;
