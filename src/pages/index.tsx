@@ -65,12 +65,14 @@ export default function Home() {
             </JobsInfos>
           </InfosContainer>
 
-          <button>
-            <div>
-              <img src="/images/plus-icon.svg" alt="Add job plus icon" />
-            </div>
-            <p>ADICIONAR NOVO JOB</p>
-          </button>
+          <Link href="/add-job">
+            <button>
+              <div>
+                <img src="/images/plus-icon.svg" alt="Add job plus icon" />
+              </div>
+              <p>ADICIONAR NOVO JOB</p>
+            </button>
+          </Link>
         </InfosSection>
 
         <JobsSection>
