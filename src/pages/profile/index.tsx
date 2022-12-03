@@ -27,7 +27,7 @@ export default function Profile() {
         <title>My profile | JobsCalc</title>
       </Head>
 
-      <Header />
+      <Header title={"Meu perfil"} />
 
       <PageContainer>
         <ProfileCardContainer>
