@@ -100,6 +100,8 @@ export const InfosSection = styled.section`
 
     background: #f1972c;
 
+    border: 1px solid #f1972c;
+
     font-size: 14px;
     font-weight: 700;
     color: #fcfdff;
