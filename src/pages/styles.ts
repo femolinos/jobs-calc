@@ -18,7 +18,7 @@ export const PageContainer = styled.div`
   width: 1440px;
   padding: 0 2rem;
 
-  z-index: 9999;
+  z-index: 0;
 
   display: flex;
   flex-direction: column;
