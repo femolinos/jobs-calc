@@ -1,7 +1,9 @@
 import Head from "next/head";
 import Link from "next/link";
 import React from "react";
+
 import { JobCard } from "../components/JobCard";
+import { useJobsList } from "../hooks/useJobList";
 
 import {
   InfosContainer,
@@ -17,6 +19,8 @@ import {
 } from "./styles";
 
 export default function Home() {
+  const { jobsList } = useJobsList()
+
   return (
     <Wrapper>
       <Head>
@@ -76,10 +80,9 @@ export default function Home() {
         </InfosSection>
 
         <JobsSection>
-          <JobCard />
-          <JobCard />
-          <JobCard />
-          <JobCard />
+          {jobsList ? jobsList.map(job => {
+            return <JobCard job={job} />
+          }) : ""}
         </JobsSection>
       </PageContainer>
     </Wrapper>

@@ -13,7 +13,17 @@ import {
   Wrapper,
 } from "./styles";
 
-export function JobCard() {
+interface JobsInfos {
+  id: number;
+  clientName: string;
+  dueTimeInDays: number;
+  value: number;
+  currentStatus: string;
+  timePerDay: number;
+  totalTimeExpectation: number;
+}
+
+export function JobCard(job: JobsInfos) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const modalStyles = {
     overlay: {
@@ -48,21 +58,21 @@ export function JobCard() {
   return (
     <Wrapper>
       <JobCounterAndNameSection>
-        <JobCounterText>1</JobCounterText>
-        <JobName>Pizzaria Guloso</JobName>
+        <JobCounterText>{job.id}</JobCounterText>
+        <JobName>{job.clientName}</JobName>
       </JobCounterAndNameSection>
 
       <DeadlineSection>
         <p>PRAZO</p>
-        <p>3 dias para entrega</p>
+        <p>{job.dueTimeInDays} dias para entrega</p>
       </DeadlineSection>
 
       <ValueSection>
         <p>VALOR</p>
-        <p>R$ 4500,00</p>
+        <p>R$ {job.value}</p>
       </ValueSection>
 
-      <JobStatus>Em andamento</JobStatus>
+      <JobStatus>{job.currentStatus}</JobStatus>
 
       <ButtonsContainer>
         <JobCardButton>
