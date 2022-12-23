@@ -27,7 +27,7 @@ export const JobInfoContainer = styled.section`
   height: calc(100vh - (4rem + 28px));
 `;
 
-export const FormContainer = styled.form`
+export const FormContainer = styled.div`
   width: 100%;
 
   h2 {
@@ -84,7 +84,6 @@ export const DefaultFormInput = styled.div`
 
     font-weight: 500;
     font-family: "IBM Plex Sans", sans-serif;
-
 
     color: #787880;
   }
