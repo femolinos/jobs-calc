@@ -19,7 +19,8 @@ export const Wrapper = styled.section`
 export const JobCounterAndNameSection = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+
+  width: 35%;
 `;
 
 export const JobCounterText = styled.p`

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useJobsList } from "../../hooks/useJobList";
 
 import {
   ButtonsContainer,
@@ -23,8 +24,9 @@ interface JobsInfos {
   totalTimeExpectation: number;
 }
 
-export function JobCard(job: JobsInfos) {
+export function JobCard({ id, clientName, dueTimeInDays, value, currentStatus }: JobsInfos) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { removeJob } = useJobsList();
   const modalStyles = {
     overlay: {
       background: "#41414C",
@@ -55,24 +57,30 @@ export function JobCard(job: JobsInfos) {
     setIsModalOpen(false);
   }
 
+  function handleDeleteJob(jobId: number) {
+    removeJob(jobId);
+
+    closeModal();
+  }
+
   return (
     <Wrapper>
       <JobCounterAndNameSection>
-        <JobCounterText>{job.id}</JobCounterText>
-        <JobName>{job.clientName}</JobName>
+        <JobCounterText>{id}</JobCounterText>
+        <JobName>{clientName}</JobName>
       </JobCounterAndNameSection>
 
       <DeadlineSection>
         <p>PRAZO</p>
-        <p>{job.dueTimeInDays} dias para entrega</p>
+        <p>{dueTimeInDays} dias para entrega</p>
       </DeadlineSection>
 
       <ValueSection>
         <p>VALOR</p>
-        <p>R$ {job.value}</p>
+        <p>R$ {value}</p>
       </ValueSection>
 
-      <JobStatus>{job.currentStatus}</JobStatus>
+      <JobStatus>{currentStatus}</JobStatus>
 
       <ButtonsContainer>
         <JobCardButton>
@@ -96,7 +104,7 @@ export function JobCard(job: JobsInfos) {
 
         <div>
           <button onClick={closeModal}>CANCELAR</button>
-          <button>EXCLUIR JOB</button>
+          <button onClick={() => handleDeleteJob(id)}>EXCLUIR JOB</button>
         </div>
       </DeleteJobModalContent>
     </Wrapper>

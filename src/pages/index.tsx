@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { JobCard } from "../components/JobCard";
 import { useJobsList } from "../hooks/useJobList";
@@ -30,13 +30,11 @@ interface JobsInfos {
 
 export default function Home() {
   const { jobsList } = useJobsList();
-  let jobs: JobsInfos[] = jobsList;
+  const [jobs, setJobs] = useState<JobsInfos[]>([]);
 
   useEffect(() => {
-    // console.log(jobsList);
-    jobs = jobsList;
-    console.log(jobs);
-  }, []);
+    setJobs(jobsList);
+  }, [jobsList]);
 
   return (
     <Wrapper>
@@ -98,9 +96,18 @@ export default function Home() {
 
         <JobsSection>
           {jobs.map((job) => {
-            console.log("tamo aí");
-
-            return <JobCard job={job} />;
+            return (
+              <JobCard
+                key={job.id}
+                id={job.id}
+                clientName={job.clientName}
+                dueTimeInDays={job.dueTimeInDays}
+                value={job.value}
+                currentStatus={job.currentStatus}
+                timePerDay={job.timePerDay}
+                totalTimeExpectation={job.totalTimeExpectation}
+              />
+            );
           })}
         </JobsSection>
       </PageContainer>
