@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 
 import { JobCard } from "../components/JobCard";
 import { useJobsList } from "../hooks/useJobList";
+import { useUserConfig } from "../hooks/useUserConfig";
 
 import {
   InfosContainer,
@@ -30,7 +31,26 @@ interface JobsInfos {
 
 export default function Home() {
   const { jobsList } = useJobsList();
+  const { userConfig } = useUserConfig();
   const [jobs, setJobs] = useState<JobsInfos[]>([]);
+  const [totalDailyWorktime, setTotalDailyWorktime] = useState(0);
+
+  useEffect(() => {
+    if(jobsList.length > 0 && userConfig.hoursPerDay !== undefined) {
+      let timeSum = 0;
+
+      for(let i = 0; i < jobsList.length; i++) {
+        timeSum += jobsList[i].timePerDay;
+      }
+
+      console.log(userConfig);
+      console.log(jobsList);
+
+      setTotalDailyWorktime(userConfig.hoursPerDay - timeSum);
+    } else {
+      setTotalDailyWorktime(0);
+    }
+  }, []);
 
   useEffect(() => {
     setJobs(jobsList);
@@ -53,18 +73,18 @@ export default function Home() {
               src="/images/alert-icon.svg"
               alt="Amount of work time left (in hours)"
             />
-            <p>Você tem 2 horas livres no seu dia</p>
+            <p>Você tem {totalDailyWorktime} horas livres no seu dia</p>
           </WorktimeLeftContainer>
 
           <ProfileSection>
             <div>
-              <p>Jaqueline</p>
+              <p>{userConfig.name ? userConfig.name : "Usuário"}</p>
               <Link href={"/profile"}>
                 <p>Ver perfil</p>
               </Link>
             </div>
 
-            <img src="/images/profile-placeholder.svg" alt="Profile Picture" />
+            <img src={userConfig.photoUrl ? userConfig.photoUrl : "/images/default-avatar.png"} alt="Profile Picture" />
           </ProfileSection>
         </PageHeader>
 

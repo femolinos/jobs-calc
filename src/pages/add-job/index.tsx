@@ -14,6 +14,7 @@ import {
   Wrapper
 } from "./styles";
 import { useJobsList } from "../../hooks/useJobList";
+import { useUserConfig } from "../../hooks/useUserConfig";
 
 interface JobsInfos {
   id: number;
@@ -32,6 +33,7 @@ export default function AddJob() {
   const router = useRouter();
 
   const { jobsList, addJob } = useJobsList();
+  const { userConfig } = useUserConfig();
 
   function handleClientNameChange(event: Event) {
     setClientName(event.target.value);
@@ -50,7 +52,7 @@ export default function AddJob() {
       id: jobsList.length + 1,
       clientName,
       dueTimeInDays: totalTimeExpectation / timePerDay,
-      value: totalTimeExpectation * 30, // TODO: bring multiplier from user configs
+      value: totalTimeExpectation * userConfig.hourValue,
       currentStatus: "Em andamento",
       timePerDay,
       totalTimeExpectation
