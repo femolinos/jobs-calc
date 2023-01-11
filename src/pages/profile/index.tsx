@@ -20,6 +20,7 @@ import {
   ValueInputCurrency,
   Wrapper,
 } from "./styles";
+import { useUserConfig } from "../../hooks/useUserConfig";
 
 interface UserConfig {
   name: string;
@@ -39,6 +40,7 @@ export default function Profile() {
   const [workDaysPerWeek, setWorkDaysPerWeek] = useState(0);
   const [hourValue, setHourValue] = useState(0);
   const [vacationWeeksPerYear, setVacationWeeksPerYear] = useState(0);
+  const { defineUserConfigs } = useUserConfig();
 
   const router = useRouter();
 
@@ -78,6 +80,7 @@ export default function Profile() {
     };
 
     localStorage.setItem("@Configs", JSON.stringify(configs));
+    defineUserConfigs(configs);
 
     router.push("/");
   }

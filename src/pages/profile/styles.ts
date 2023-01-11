@@ -69,6 +69,8 @@ export const ProfileNameLabel = styled.p`
   font-weight: 600;
   font-family: "IBM Plex Sans", sans-serif;
 
+  text-align: center;
+
   color: #5a5a66;
 
   margin-top: 1.5rem;

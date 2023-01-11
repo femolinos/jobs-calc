@@ -89,9 +89,9 @@ export function JobCard({
       <JobStatus>{currentStatus}</JobStatus>
 
       <ButtonsContainer>
-        <JobCardButton>
+        {/* <JobCardButton>
           <img src="/images/edit-icon.svg" alt="Edit job icon" />
-        </JobCardButton>
+        </JobCardButton> */}
         <JobCardButton onClick={openModal}>
           <img src="/images/delete-icon.svg" alt="Delete job icon" />
         </JobCardButton>

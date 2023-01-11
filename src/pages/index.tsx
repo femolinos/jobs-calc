@@ -19,7 +19,7 @@ import {
   Wrapper,
 } from "./styles";
 
-interface JobsInfos {
+interface IJobsInfos {
   id: number;
   clientName: string;
   dueTimeInDays: number;
@@ -29,10 +29,21 @@ interface JobsInfos {
   totalTimeExpectation: number;
 }
 
+interface IUserConfig {
+  name: string;
+  photoUrl: string;
+  hourValue: number;
+  monthlySalary: number;
+  hoursPerDay: number;
+  workDaysPerWeek: number;
+  vacationWeeksPerYear: number;
+}
+
 export default function Home() {
   const { jobsList } = useJobsList();
   const { userConfig } = useUserConfig();
-  const [jobs, setJobs] = useState<JobsInfos[]>([]);
+  const [jobs, setJobs] = useState<IJobsInfos[]>([]);
+  const [configs, setConfigs] = useState<IUserConfig>();
   const [totalDailyWorktime, setTotalDailyWorktime] = useState(0);
 
   useEffect(() => {
@@ -47,6 +58,8 @@ export default function Home() {
       console.log(jobsList);
 
       setTotalDailyWorktime(userConfig.hoursPerDay - timeSum);
+    } else if (userConfig.hoursPerDay !== undefined) {
+      setTotalDailyWorktime(userConfig.hoursPerDay);
     } else {
       setTotalDailyWorktime(0);
     }
@@ -54,6 +67,26 @@ export default function Home() {
 
   useEffect(() => {
     setJobs(jobsList);
+    setConfigs(userConfig);
+  }, [jobsList, userConfig]);
+
+  useEffect(() => {
+    if (jobsList.length > 0 && userConfig.hoursPerDay !== undefined) {
+      let timeSum = 0;
+
+      for (let i = 0; i < jobsList.length; i++) {
+        timeSum += jobsList[i].timePerDay;
+      }
+
+      console.log(userConfig);
+      console.log(jobsList);
+
+      setTotalDailyWorktime(userConfig.hoursPerDay - timeSum);
+    } else if (userConfig.hoursPerDay !== undefined) {
+      setTotalDailyWorktime(userConfig.hoursPerDay);
+    } else {
+      setTotalDailyWorktime(0);
+    }
   }, [jobsList]);
 
   return (
@@ -78,7 +111,7 @@ export default function Home() {
 
           <ProfileSection>
             <div>
-              <p>{userConfig?.name ? userConfig.name : "Usuário"}</p>
+              <p>{configs?.name ? configs.name : "Usuário"}</p>
               <Link href={"/profile"}>
                 <p>Ver perfil</p>
               </Link>
@@ -86,8 +119,8 @@ export default function Home() {
 
             <img
               src={
-                userConfig?.photoUrl
-                  ? userConfig.photoUrl
+                configs?.photoUrl
+                  ? configs.photoUrl
                   : "/images/default-avatar.png"
               }
               alt="Profile Picture"
@@ -98,17 +131,17 @@ export default function Home() {
         <InfosSection>
           <InfosContainer>
             <JobsInfos>
-              <strong>12</strong>
+              <strong>{jobs.length > 0 ? jobs.length : "0"}</strong>
               <p>Projetos ao total</p>
             </JobsInfos>
-            <JobsInfos hasMargin>
+            {/* <JobsInfos hasMargin>
               <strong>7</strong>
               <p>Em andamento</p>
             </JobsInfos>
             <JobsInfos hasMargin>
               <strong>4</strong>
               <p>Encerrados</p>
-            </JobsInfos>
+            </JobsInfos> */}
           </InfosContainer>
 
           <Link href="/add-job">
