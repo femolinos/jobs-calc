@@ -44,28 +44,32 @@ export default function Profile() {
 
   const router = useRouter();
 
-  function handleNameChange(event: Event) {
-    setName(event.target.value);
+  function handleNameChange(event: React.FormEvent<HTMLInputElement>) {
+    setName(event.currentTarget.value);
   }
 
-  function handlePhotoUrlChange(event: Event) {
-    setPhotoUrl(event.target.value);
+  function handlePhotoUrlChange(event: React.FormEvent<HTMLInputElement>) {
+    setPhotoUrl(event.currentTarget.value);
   }
 
-  function handleMonthlySalaryChange(event: Event) {
-    setMonthlySalary(event.target.value);
+  function handleMonthlySalaryChange(event: React.FormEvent<HTMLInputElement>) {
+    setMonthlySalary(Number(event.currentTarget.value));
   }
 
-  function handleHoursPerDayChange(event: Event) {
-    setHoursPerDay(event.target.value);
+  function handleHoursPerDayChange(event: React.FormEvent<HTMLInputElement>) {
+    setHoursPerDay(Number(event.currentTarget.value));
   }
 
-  function handleWorkDaysPerWeekChange(event: Event) {
-    setWorkDaysPerWeek(event.target.value);
+  function handleWorkDaysPerWeekChange(
+    event: React.FormEvent<HTMLInputElement>
+  ) {
+    setWorkDaysPerWeek(Number(event.currentTarget.value));
   }
 
-  function handleVacationWeeksPerYearChange(event: Event) {
-    setVacationWeeksPerYear(event.target.value);
+  function handleVacationWeeksPerYearChange(
+    event: React.FormEvent<HTMLInputElement>
+  ) {
+    setVacationWeeksPerYear(Number(event.currentTarget.value));
   }
 
   function submitUserConfigs() {

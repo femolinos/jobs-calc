@@ -126,9 +126,12 @@ export const InfosContainer = styled.div`
   justify-content: center;
 `;
 
-export const JobsInfos = styled.div`
-  margin-left: ${(props) => (props.hasMargin ? "2rem" : "0")};
-
+export const JobsInfos = styled("div")<{ hasMargin: boolean }>`
+  ${(props) =>
+    props.hasMargin &&
+    `
+    margin-left: "2rem"
+  `}
   strong {
     font-size: 24px;
     color: #fcfdff;

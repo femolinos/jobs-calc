@@ -35,16 +35,18 @@ export default function AddJob() {
   const { jobsList, addJob } = useJobsList();
   const { userConfig } = useUserConfig();
 
-  function handleClientNameChange(event: Event) {
-    setClientName(event.target.value);
+  function handleClientNameChange(event: React.FormEvent<HTMLInputElement>) {
+    setClientName(event.currentTarget.value);
   }
 
-  function handleTimePerDayChange(event: Event) {
-    setTimePerDay(event.target.value);
+  function handleTimePerDayChange(event: React.FormEvent<HTMLInputElement>) {
+    setTimePerDay(Number(event.currentTarget.value));
   }
 
-  function handleTotalTimeExpectationChange(event: Event) {
-    setTotalTimeExpectation(event.target.value);
+  function handleTotalTimeExpectationChange(
+    event: React.FormEvent<HTMLInputElement>
+  ) {
+    setTotalTimeExpectation(Number(event.currentTarget.value));
   }
 
   function handleJobSubmit() {
