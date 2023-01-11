@@ -11,7 +11,7 @@ import {
   JobInfoContainer,
   PageContainer,
   SaveJobCard,
-  Wrapper
+  Wrapper,
 } from "./styles";
 import { useJobsList } from "../../hooks/useJobList";
 import { useUserConfig } from "../../hooks/useUserConfig";
@@ -55,7 +55,7 @@ export default function AddJob() {
       value: totalTimeExpectation * userConfig.hourValue,
       currentStatus: "Em andamento",
       timePerDay,
-      totalTimeExpectation
+      totalTimeExpectation,
     };
 
     addJob(newJob);
@@ -79,18 +79,37 @@ export default function AddJob() {
             <form>
               <DefaultFormInput>
                 <label htmlFor="jobName">Nome do Job</label>
-                <input id="jobName" type="text" value={clientName} onChange={(evt) => handleClientNameChange(evt)} />
+                <input
+                  id="jobName"
+                  type="text"
+                  value={clientName}
+                  onChange={(evt) => handleClientNameChange(evt)}
+                />
               </DefaultFormInput>
 
               <FormRow>
                 <DefaultFormInput>
-                  <label htmlFor="jobTimePerDay">Quantas horas por dia vai dedicar ao Job?</label>
-                  <input id="jobTimePerDay" type="number" value={timePerDay} onChange={(evt) => handleTimePerDayChange(evt)} />
+                  <label htmlFor="jobTimePerDay">
+                    Quantas horas por dia vai dedicar ao Job?
+                  </label>
+                  <input
+                    id="jobTimePerDay"
+                    type="number"
+                    value={timePerDay}
+                    onChange={(evt) => handleTimePerDayChange(evt)}
+                  />
                 </DefaultFormInput>
 
                 <DefaultFormInput>
-                  <label htmlFor="jobTimeEstimate">Estimativa de horas para esse job</label>
-                  <input id="jobTimeEstimate" type="number" value={totalTimeExpectation} onChange={(evt) => handleTotalTimeExpectationChange(evt)} />
+                  <label htmlFor="jobTimeEstimate">
+                    Estimativa de horas para esse job
+                  </label>
+                  <input
+                    id="jobTimeEstimate"
+                    type="number"
+                    value={totalTimeExpectation}
+                    onChange={(evt) => handleTotalTimeExpectationChange(evt)}
+                  />
                 </DefaultFormInput>
               </FormRow>
             </form>

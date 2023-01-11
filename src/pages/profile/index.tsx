@@ -74,7 +74,7 @@ export default function Profile() {
       hoursPerDay,
       workDaysPerWeek,
       hourValue: monthlySalary / (hoursPerDay * workDaysPerWeek),
-      vacationWeeksPerYear
+      vacationWeeksPerYear,
     };
 
     localStorage.setItem("@Configs", JSON.stringify(configs));
@@ -83,10 +83,10 @@ export default function Profile() {
   }
 
   useEffect(() => {
-    if(typeof window !== "undefined") {
+    if (typeof window !== "undefined") {
       const configs = localStorage.getItem("@Configs");
 
-      if(configs) {
+      if (configs) {
         const parsedConfigs = JSON.parse(configs);
 
         setName(parsedConfigs.name);
@@ -101,8 +101,8 @@ export default function Profile() {
   }, []);
 
   useEffect(() => {
-    if(hoursPerDay > 0 && workDaysPerWeek > 0) {
-      setHourValue((monthlySalary / 4) / (hoursPerDay * workDaysPerWeek));
+    if (hoursPerDay > 0 && workDaysPerWeek > 0) {
+      setHourValue(monthlySalary / 4 / (hoursPerDay * workDaysPerWeek));
     }
   }, [monthlySalary, hoursPerDay, workDaysPerWeek]);
 
@@ -117,11 +117,15 @@ export default function Profile() {
       <PageContainer>
         <ProfileCardContainer>
           <img
-            src={photoUrl.trim() !== "" ? photoUrl : "/images/default-avatar.png"}
+            src={
+              photoUrl.trim() !== "" ? photoUrl : "/images/default-avatar.png"
+            }
             alt="User profile picture"
           />
 
-          <ProfileNameLabel>{name.trim() !== "" ? name : "Usuário"}</ProfileNameLabel>
+          <ProfileNameLabel>
+            {name.trim() !== "" ? name : "Usuário"}
+          </ProfileNameLabel>
 
           <ProfileWorktimeLabel>
             O valor da sua hora é{" "}
@@ -135,8 +139,18 @@ export default function Profile() {
           <h2>Dados do perfil</h2>
 
           <ProfileDataInputForm>
-            <input type="text" placeholder="Nome" value={name} onChange={(evt) => handleNameChange(evt)} />
-            <input type="text" placeholder="Link da foto" value={photoUrl} onChange={(evt) => handlePhotoUrlChange(evt)} />
+            <input
+              type="text"
+              placeholder="Nome"
+              value={name}
+              onChange={(evt) => handleNameChange(evt)}
+            />
+            <input
+              type="text"
+              placeholder="Link da foto"
+              value={photoUrl}
+              onChange={(evt) => handlePhotoUrlChange(evt)}
+            />
           </ProfileDataInputForm>
 
           <PlanningHeading>Planejamento</PlanningHeading>
@@ -148,7 +162,12 @@ export default function Profile() {
                   Quanto eu quero ganhar por mês?
                 </label>
                 <MonthValueContainer>
-                  <input id="monthValue" type="number" value={monthlySalary} onChange={(evt) => handleMonthlySalaryChange(evt)} />
+                  <input
+                    id="monthValue"
+                    type="number"
+                    value={monthlySalary}
+                    onChange={(evt) => handleMonthlySalaryChange(evt)}
+                  />
                   <ValueInputCurrency>R$</ValueInputCurrency>
                 </MonthValueContainer>
               </DefaultFormInput>
@@ -156,7 +175,12 @@ export default function Profile() {
                 <label htmlFor="worktimePerDay">
                   Quantas horas quero trabalhar por dia?
                 </label>
-                <input id="worktimePerDay" type="number" value={hoursPerDay} onChange={(evt) => handleHoursPerDayChange(evt)} />
+                <input
+                  id="worktimePerDay"
+                  type="number"
+                  value={hoursPerDay}
+                  onChange={(evt) => handleHoursPerDayChange(evt)}
+                />
               </DefaultFormInput>
             </FormRow>
             <FormRow>
@@ -164,13 +188,23 @@ export default function Profile() {
                 <label htmlFor="daysOfWork">
                   Quantos dias quero trabalhar por semana?
                 </label>
-                <input id="daysOfWork" type="number" value={workDaysPerWeek} onChange={(evt) => handleWorkDaysPerWeekChange(evt)} />
+                <input
+                  id="daysOfWork"
+                  type="number"
+                  value={workDaysPerWeek}
+                  onChange={(evt) => handleWorkDaysPerWeekChange(evt)}
+                />
               </DefaultFormInput>
               <DefaultFormInput>
                 <label htmlFor="vacationWeeks">
                   Quantas semanas por ano você quer tirar férias?
                 </label>
-                <input id="vacationWeeks" type="number" value={vacationWeeksPerYear} onChange={(evt) => handleVacationWeeksPerYearChange(evt)} />
+                <input
+                  id="vacationWeeks"
+                  type="number"
+                  value={vacationWeeksPerYear}
+                  onChange={(evt) => handleVacationWeeksPerYearChange(evt)}
+                />
               </DefaultFormInput>
             </FormRow>
           </PlanningForm>

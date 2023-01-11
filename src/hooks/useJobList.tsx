@@ -24,39 +24,39 @@ const JobsContext = createContext<JobsContextData>({} as JobsContextData);
 
 export function JobsProvider({ children }: JobsProviderProps): JSX.Element {
   const [jobsList, setJobsList] = useState<JobsInfos[]>(() => {
-    if(typeof window !== "undefined") {
+    if (typeof window !== "undefined") {
       const jobs = localStorage.getItem("@Jobs");
 
-      if(jobs) {
+      if (jobs) {
         return JSON.parse(jobs);
       }
-      
+
       return [];
     }
   });
 
   function addJob(job: JobsInfos) {
-    if(typeof window !== "undefined") {
+    if (typeof window !== "undefined") {
       const newJobList = jobsList;
-  
+
       newJobList.push(job);
-  
+
       setJobsList(newJobList);
-  
+
       localStorage.setItem("@Jobs", JSON.stringify(newJobList));
     }
   }
 
   function removeJob(jobId: number) {
-    if(typeof window !== "undefined") {
-      const newJobList = jobsList.filter(job => job.id !== jobId);
-  
-      for(let i = 0; i < newJobList.length; i++) {
+    if (typeof window !== "undefined") {
+      const newJobList = jobsList.filter((job) => job.id !== jobId);
+
+      for (let i = 0; i < newJobList.length; i++) {
         newJobList[i].id = i + 1;
       }
-  
+
       setJobsList(newJobList);
-  
+
       localStorage.setItem("@Jobs", JSON.stringify(newJobList));
     }
   }

@@ -19,14 +19,18 @@ interface UserConfigContextData {
   defineUserConfigs: (config: UserConfig) => void;
 }
 
-const UserConfigContext = createContext<UserConfigContextData>({} as UserConfigContextData);
+const UserConfigContext = createContext<UserConfigContextData>(
+  {} as UserConfigContextData
+);
 
-export function UserConfigProvider({ children }: UserConfigProviderProps): JSX.Element {
+export function UserConfigProvider({
+  children,
+}: UserConfigProviderProps): JSX.Element {
   const [userConfig, setUserConfig] = useState<UserConfig>(() => {
-    if(typeof window !== "undefined") {
+    if (typeof window !== "undefined") {
       const configs = localStorage.getItem("@Configs");
 
-      if(configs) {
+      if (configs) {
         return JSON.parse(configs);
       }
 
@@ -35,7 +39,7 @@ export function UserConfigProvider({ children }: UserConfigProviderProps): JSX.E
   });
 
   function defineUserConfigs(config: UserConfig) {
-    if(typeof window !== "undefined") {
+    if (typeof window !== "undefined") {
       setUserConfig(config);
 
       localStorage.setItem("@Configs", JSON.stringify(config));

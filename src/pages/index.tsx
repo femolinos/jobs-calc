@@ -36,10 +36,10 @@ export default function Home() {
   const [totalDailyWorktime, setTotalDailyWorktime] = useState(0);
 
   useEffect(() => {
-    if(jobsList.length > 0 && userConfig.hoursPerDay !== undefined) {
+    if (jobsList.length > 0 && userConfig.hoursPerDay !== undefined) {
       let timeSum = 0;
 
-      for(let i = 0; i < jobsList.length; i++) {
+      for (let i = 0; i < jobsList.length; i++) {
         timeSum += jobsList[i].timePerDay;
       }
 
@@ -78,13 +78,20 @@ export default function Home() {
 
           <ProfileSection>
             <div>
-              <p>{userConfig.name ? userConfig.name : "Usuário"}</p>
+              <p>{userConfig?.name ? userConfig.name : "Usuário"}</p>
               <Link href={"/profile"}>
                 <p>Ver perfil</p>
               </Link>
             </div>
 
-            <img src={userConfig.photoUrl ? userConfig.photoUrl : "/images/default-avatar.png"} alt="Profile Picture" />
+            <img
+              src={
+                userConfig?.photoUrl
+                  ? userConfig.photoUrl
+                  : "/images/default-avatar.png"
+              }
+              alt="Profile Picture"
+            />
           </ProfileSection>
         </PageHeader>
 

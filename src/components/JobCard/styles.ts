@@ -136,17 +136,17 @@ export const DeleteJobModalContent = styled(Modal)`
     button:first-child {
       padding: 12px 48px;
       background: #e1e3e5;
-  
+
       font-size: 14px;
       font-family: "IBM Plex Sans", sans-serif;
       font-weight: 700;
       color: #787880;
-  
+
       border: 1px solid #e1e3e6;
       border-radius: 5px;
-  
+
       transition: filter 0.2s;
-  
+
       &:hover {
         filter: brightness(0.95);
       }
@@ -155,17 +155,17 @@ export const DeleteJobModalContent = styled(Modal)`
     button:last-child {
       padding: 12px 48px;
       background: #eb3b35;
-  
+
       font-size: 14px;
       font-family: "IBM Plex Sans", sans-serif;
       font-weight: 700;
       color: #fcfdff;
-  
+
       border: 1px solid #eb3b35;
       border-radius: 5px;
-  
+
       transition: all 0.2s;
-  
+
       &:hover {
         background: #fcfdff;
         color: #eb3b35;

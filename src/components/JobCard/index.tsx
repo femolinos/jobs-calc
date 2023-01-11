@@ -24,7 +24,13 @@ interface JobsInfos {
   totalTimeExpectation: number;
 }
 
-export function JobCard({ id, clientName, dueTimeInDays, value, currentStatus }: JobsInfos) {
+export function JobCard({
+  id,
+  clientName,
+  dueTimeInDays,
+  value,
+  currentStatus,
+}: JobsInfos) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { removeJob } = useJobsList();
   const modalStyles = {
@@ -46,8 +52,8 @@ export function JobCard({ id, clientName, dueTimeInDays, value, currentStatus }:
       top: "50%",
       left: "50%",
       transform: "translate(-50%, -50%)",
-    }
-  }
+    },
+  };
 
   function openModal() {
     setIsModalOpen(true);
