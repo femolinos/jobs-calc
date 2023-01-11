@@ -130,7 +130,7 @@ export default function Home() {
 
         <InfosSection>
           <InfosContainer>
-            <JobsInfos>
+            <JobsInfos hasMargin={false}>
               <strong>{jobs.length > 0 ? jobs.length : "0"}</strong>
               <p>Projetos ao total</p>
             </JobsInfos>
