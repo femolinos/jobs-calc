@@ -99,6 +99,7 @@ export function JobCard({
       <DeleteJobModalContent
         isOpen={isModalOpen}
         onRequestClose={closeModal}
+        // @ts-ignore
         style={modalStyles}
       >
         <img src="/images/big-trash.svg" alt="Delete Job Image" />
