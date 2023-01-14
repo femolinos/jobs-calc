@@ -12,7 +12,7 @@ import {
   PageContainer,
   SaveJobCard,
   Wrapper,
-} from "../../styles/add-job.styles";
+} from "./styles";
 import { useJobsList } from "../../hooks/useJobList";
 import { useUserConfig } from "../../hooks/useUserConfig";
 
