@@ -73,13 +73,17 @@ export default function Profile() {
   }
 
   function submitUserConfigs() {
+    const valuePerHour = Math.ceil(
+      monthlySalary / (hoursPerDay * workDaysPerWeek)
+    );
+
     const configs: UserConfig = {
       name,
       photoUrl,
       monthlySalary,
       hoursPerDay,
       workDaysPerWeek,
-      hourValue: monthlySalary / (hoursPerDay * workDaysPerWeek),
+      hourValue: valuePerHour,
       vacationWeeksPerYear,
     };
 
@@ -109,7 +113,7 @@ export default function Profile() {
 
   useEffect(() => {
     if (hoursPerDay > 0 && workDaysPerWeek > 0) {
-      setHourValue(monthlySalary / 4 / (hoursPerDay * workDaysPerWeek));
+      setHourValue(Math.ceil(monthlySalary / (hoursPerDay * workDaysPerWeek)));
     }
   }, [monthlySalary, hoursPerDay, workDaysPerWeek]);
 

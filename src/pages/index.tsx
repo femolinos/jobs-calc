@@ -54,9 +54,6 @@ export default function Home() {
         timeSum += jobsList[i].timePerDay;
       }
 
-      console.log(userConfig);
-      console.log(jobsList);
-
       setTotalDailyWorktime(userConfig.hoursPerDay - timeSum);
     } else if (userConfig.hoursPerDay !== undefined) {
       setTotalDailyWorktime(userConfig.hoursPerDay);
@@ -77,9 +74,6 @@ export default function Home() {
       for (let i = 0; i < jobsList.length; i++) {
         timeSum += jobsList[i].timePerDay;
       }
-
-      console.log(userConfig);
-      console.log(jobsList);
 
       setTotalDailyWorktime(userConfig.hoursPerDay - timeSum);
     } else if (userConfig.hoursPerDay !== undefined) {
@@ -161,7 +155,7 @@ export default function Home() {
                 key={job.id}
                 id={job.id}
                 clientName={job.clientName}
-                dueTimeInDays={job.dueTimeInDays}
+                dueTimeInDays={Math.ceil(job.dueTimeInDays)}
                 value={job.value}
                 currentStatus={job.currentStatus}
                 timePerDay={job.timePerDay}
