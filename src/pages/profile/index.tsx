@@ -19,7 +19,7 @@ import {
   UserDataForm,
   ValueInputCurrency,
   Wrapper,
-} from "./styles";
+} from "../../styles/profile.styles";
 import { useUserConfig } from "../../hooks/useUserConfig";
 
 interface UserConfig {

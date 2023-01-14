@@ -17,7 +17,7 @@ import {
   ProfileSection,
   WorktimeLeftContainer,
   Wrapper,
-} from "./styles";
+} from "../styles/home.styles";
 
 interface IJobsInfos {
   id: number;
